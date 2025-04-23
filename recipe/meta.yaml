@@ -46,12 +46,17 @@ test:
     - coveralls
 
 about:
-  home: http://snowplow.io
-  dev_url: https://github.com/snowplow/snowplow-python-tracker
-  doc_url: https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/python-tracker/
+  home: https://snowplow.io
   summary: Snowplow event tracker for Python. Add analytics to your Python and Django apps, webapps and games.
   license: Apache-2.0
   license_file: LICENSE
+  license_family: APACHE
+  description: |
+    Add analytics to your Python apps and Python games with the Snowplow event tracker for Python.
+    with this tracker you can collect event data from your Python-based applications, games or 
+    Python web servers/frameworks. 
+  dev_url: https://github.com/snowplow/snowplow-python-tracker
+  doc_url: https://docs.snowplow.io/docs/collecting-data/collecting-from-own-applications/python-tracker/
 
 extra:
   recipe-maintainers:
