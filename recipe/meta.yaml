@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  #url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/snowplow_tracker-{{ version }}.tar.gz
   url: https://github.com/snowplow/snowplow-python-tracker/archive/refs/tags/{{ version }}.tar.gz
   sha256: 91609b1e8e105b3690c6245338bbfb6c25fd41c6823170a688a5189a92dc6ba3
 
