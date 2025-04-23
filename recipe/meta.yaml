@@ -1,38 +1,50 @@
 {% set name = "snowplow-tracker" %}
-{% set version = "1.0.4" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/snowplow_tracker-{{ version }}.tar.gz
-  sha256: 16d8a3c001a7847d91dc081d508324550c314a4cbf5d6106b5ab35f77fa34678
+  #url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/snowplow_tracker-{{ version }}.tar.gz
+  url: https://github.com/snowplow/snowplow-python-tracker/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 91609b1e8e105b3690c6245338bbfb6c25fd41c6823170a688a5189a92dc6ba3
 
 build:
-  noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python
     - pip
     - setuptools
+    - wheel
   run:
-    - python >={{ python_min }}
+    - python
     - requests >=2.25.1,<3.0
-    - types-requests >=2.25.1,<3.0
     - typing_extensions >=3.7.4
+  run_constraints:
+    - mypy >=0.971
+    - types-requests >=2.51.1,<3.0
 
 test:
+  source_files:
+    - snowplow_tracker/test/unit
   imports:
     - snowplow_tracker
   commands:
     - pip check
+    - pytest -vv .
   requires:
     - pip
-    - python {{ python_min }}
+    - python
+    - pytest
+    - attrs ==21.2.0
+    - freezegun ==1.1.0  # [py<313]
+    - freezegun ==1.5.1 # [py>=313]
+    - pytest-cov
+    - coveralls
 
 about:
   home: http://snowplow.io
