@@ -25,13 +25,15 @@ requirements:
     - typing_extensions >=3.7.4
   run_constraints:
     - mypy >=0.971
-    - types-requests >=2.51.1,<3.0
+    - types-requests >=2.25.1,<3.0
 
 test:
   source_files:
     - snowplow_tracker/test/unit
   imports:
     - snowplow_tracker
+    - snowplow_tracker.test
+    - snowplow_tracker.events
   commands:
     - pip check
     - pytest -vv .
